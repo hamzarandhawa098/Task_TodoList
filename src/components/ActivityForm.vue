@@ -3,7 +3,7 @@
     <input
       v-model="newActivity"
       placeholder="New task..."
-      class="border-y border-l border-white rounded-l-xl px-4 py-2  text-xl text-white w-full"
+      class="border-y border-l border-white rounded-l-xl px-4 py-2 text-xl text-white w-full"
     />
     <button
       @click="addActivity"
@@ -13,16 +13,17 @@
     </button>
   </div>
 </template>
+
 <script setup>
 import { ref } from "vue";
-import { useActivityStore } from "../stores/activityStore";
+import { useActivityStore } from "@/stores/activityStore";
 
 const store = useActivityStore();
 const newActivity = ref("");
 
-const addActivity = () => {
+const addActivity = async () => {
   if (!newActivity.value.trim()) return;
-  store.addActivity(newActivity.value);
+  await store.addActivity(newActivity.value);
   newActivity.value = "";
 };
 </script>

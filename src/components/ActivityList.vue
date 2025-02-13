@@ -10,9 +10,15 @@
     />
   </div>
 </template>
+
 <script setup>
+import { onMounted } from "vue";
 import { useActivityStore } from "../stores/activityStore";
 import ActivityItem from "./ActivityItem.vue";
 
 const store = useActivityStore();
+
+onMounted(() => {
+  store.fetchActivities();
+});
 </script>
